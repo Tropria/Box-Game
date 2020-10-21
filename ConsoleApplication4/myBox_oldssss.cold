@@ -138,7 +138,7 @@ void draw() {
     }
     cout << endl;
 }
-int main_0()
+int main()
 {
     draw();
     while (true) {

@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication4", "ConsoleApplication4\ConsoleApplication4.vcxproj", "{14F6D726-13F6-45A8-9128-A99979CD41DD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oldVersion", "oldVersion", "{FEBA8CEA-7A7D-472B-BC12-9841A44CF863}"
+	ProjectSection(SolutionItems) = preProject
+		ConsoleApplication4\myBox_oldssss.cold = ConsoleApplication4\myBox_oldssss.cold
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
