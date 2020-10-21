@@ -132,13 +132,13 @@ void draw() {
             map[bx[i]][by[i]] = 'O';
         }
     }
-    //¥Ú”°µÿÕº
+    //draw map
     for (int i = 0; i < 5; ++i) {
         cout << map[i]<<endl;
     }
     cout << endl;
 }
-int main_old()
+int main_0()
 {
     draw();
     while (true) {
