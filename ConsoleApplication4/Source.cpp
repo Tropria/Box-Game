@@ -1,5 +1,7 @@
-
+#include <fstream>
 #include <iostream>
+
+using namespace std;
 // #墙壁 _空间 .目的地 o箱子 p玩家
 const char gStageData[] = "\
 ########\n\
@@ -30,9 +32,25 @@ void draw(const Object* state, int w, int h);
 void update(Object* state, char input, int w, int h);
 //检测游戏是否通关
 bool checkClear(const Object* state, int w, int h);
+//从文件中读取地图信息
+char* readFileImage(const char* fileName);
 
+//从文件中读取地图信息
+char* readFileImage(const char* fileName) {
+	ifstream inputFile(fileName, ifstream::binary);
+	inputFile.seekg(0, ifstream::end);//移动到末尾
+	//位置=文件大小
+	int fileSize = static_cast<int>( inputFile.tellg() );
+	cout << "fileSize " << fileSize<<endl;
+	inputFile.seekg(0, ifstream::beg);//返回到起始位置
+	char* fileImage = new char[fileSize]; //分配足够的空间
+	inputFile.read(fileImage, fileSize); //读取文件
 
-using namespace std;
+	//cout.write(fileImage, fileSize);
+	return fileImage;
+
+}
+
 //读取场景字符串将其转换成Object数组
 void initialize(Object* state, int width, int height, const char* stageData) {
 	const char* d = stageData; //读取地图信息指针
@@ -57,7 +75,7 @@ void initialize(Object* state, int width, int height, const char* stageData) {
 
 		//如果遇到未知字符则无视
 		if (t != OBJ_UNKNOWN) {
-			cout << x << " " << y << endl;
+			//cout << x << " " << y << endl;
 			state[y * width + x] = t;//写入场景数据
 			++x;
 		}
@@ -140,6 +158,10 @@ bool checkClear(const Object* state, int w, int h) {
 
 int main() {
 	cout << "new myBox" << endl;
+	char* stagedata = readFileImage("stageData.txt");
+	cout << stagedata << endl;
+	cout << "finished" << endl;
+
 	//创建初始Object数组,即被更新的游戏信息
 	Object* state = new Object[gStageHeight * gStageWidth];
 	//初始化场景
