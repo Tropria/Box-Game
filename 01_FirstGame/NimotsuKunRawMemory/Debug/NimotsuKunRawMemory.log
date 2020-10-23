@@ -1,0 +1,9 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  main.cpp
+d:\_desktop\book\core\src\01_firstgame\nimotsukunrawmemory\main.cpp(150): warning C4244: “=”: 从“Object”转换到“char”，可能丢失数据
+d:\_desktop\book\core\src\01_firstgame\nimotsukunrawmemory\main.cpp(151): warning C4244: “=”: 从“Object”转换到“char”，可能丢失数据
+d:\_desktop\book\core\src\01_firstgame\nimotsukunrawmemory\main.cpp(164): warning C4244: “=”: 从“Object”转换到“char”，可能丢失数据
+d:\_desktop\book\core\src\01_firstgame\nimotsukunrawmemory\main.cpp(165): warning C4244: “=”: 从“Object”转换到“char”，可能丢失数据
+d:\_desktop\book\core\src\01_firstgame\nimotsukunrawmemory\main.cpp(166): warning C4244: “=”: 从“Object”转换到“char”，可能丢失数据
+main.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+  NimotsuKunRawMemory.vcxproj -> D:\_desktop\book\core\src\01_FirstGame\Debug\NimotsuKunRawMemory.exe

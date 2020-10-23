@@ -12,6 +12,30 @@ const char gStageData[] = "\
 const int gStageHeight = 5;
 const int gStageWidth = 8;
 
+class IntArray2D {
+	int* mArray; //private defaultly 2D 
+	const int mSize0;
+	const int mSize1;
+public:
+	IntArray2D(int size0, int size1) :
+		mArray(nullptr), //养成将指针赋值为0的习惯
+		mSize0(size0),
+		mSize1(size1) {
+		mArray = new int[size0 * size1];
+	}
+	~IntArray2D() {
+		delete[] mArray;
+		mArray = nullptr; //养成将不需要的指针赋值为0的习惯
+	}
+	int& operator() (int index0, int index1) { //array(2,1) = 5;
+		return mArray[ index1* mSize0 + index0];
+	}
+
+	const int& operator() (int index0, int index1) const { // const IntArray2D array(5, 8);
+		return mArray[index1 * mSize0 + index0];
+	}
+};
+
 enum Object {
 	OBJ_SPACE,
 	OBJ_WALL,
@@ -45,8 +69,9 @@ char* readFileImage(const char* fileName) {
 	inputFile.seekg(0, ifstream::beg);//返回到起始位置
 	char* fileImage = new char[fileSize]; //分配足够的空间
 	inputFile.read(fileImage, fileSize); //读取文件
+	//fileImage[fileSize] = '\0';
 
-	//cout.write(fileImage, fileSize);
+	cout.write(fileImage, fileSize);
 	return fileImage;
 
 }
@@ -158,9 +183,14 @@ bool checkClear(const Object* state, int w, int h) {
 
 int main() {
 	cout << "new myBox" << endl;
-	char* stagedata = readFileImage("stageData.txt");
-	cout << stagedata << endl;
-	cout << "finished" << endl;
+	//char* stagedata = readFileImage("stageData.txt"); //注意char* stagedata数组为地图信息，
+	//cout << stagedata << endl; //char * stage结尾并没有\0休止符，故按cout输出时不能正确结尾
+
+	const IntArray2D array(5, 8);
+
+	cout << "Test" << endl;
+	cout << endl;
+
 
 	//创建初始Object数组,即被更新的游戏信息
 	Object* state = new Object[gStageHeight * gStageWidth];
